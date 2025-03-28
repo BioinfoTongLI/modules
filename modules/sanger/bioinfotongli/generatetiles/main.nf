@@ -1,9 +1,13 @@
 process BIOINFOTONGLI_GENERATETILES {
     tag "${meta.id}"
+    label "process_single"
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         "quay.io/cellgeni/imagetileprocessor:0.1.9":
         "quay.io/cellgeni/imagetileprocessor:0.1.9"}"
+
+    when:
+    task.ext.when == null || task.ext.when
 
     input:
     tuple val(meta), path(image)

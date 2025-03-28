@@ -35,6 +35,7 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test' ]`
+
     - tile_coords:
         type: file
         description: a csv file contains the information of tiles
