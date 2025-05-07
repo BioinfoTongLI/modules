@@ -2,10 +2,8 @@ process BIOINFOTONGLI_MERGEPEAKS {
     tag "$meta.id"
     label 'process_single'
 
-    // conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'quay.io/cellgeni/imagetileprocessor:0.1.7':
-        'quay.io/cellgeni/imagetileprocessor:0.1.7' }"
+    conda "${moduleDir}/environment.yml"
+    container 'quay.io/cellgeni/imagetileprocessor:0.1.15'
 
     input:
     tuple val(meta), val(ch_ind), path(csvs)
